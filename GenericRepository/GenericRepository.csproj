@@ -11,12 +11,4 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Remove="sqlitedemo.db" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="sqlitedemo.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
 </Project>

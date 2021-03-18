@@ -13,7 +13,8 @@ namespace Generic_Repository
         [SetUp]
         public void Setup()
         {
-            _repository = new Repository<Record>(new SqlLiteDbContext());
+            var factory = new ConnectionFactory();
+            _repository = new Repository<Record>(factory.CreateContext());
         }
 
         [Test]

@@ -5,10 +5,10 @@ namespace GenericRepository
     public class SqlLiteDbContext : DbContext
     {
 
-        public DbSet<Record> Records { get; set; }
+        public SqlLiteDbContext(DbContextOptions options)
+            : base(options) {}
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-           => options.UseSqlite("Data Source=sqlitedemo.db");
+        public virtual DbSet<Record> Records { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

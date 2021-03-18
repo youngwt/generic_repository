@@ -21,7 +21,8 @@ namespace GenericRepository
 
         public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            _context.Remove(entity);
+            _context.SaveChanges();
         }
 
         public void Delete(Guid id)
