@@ -1,9 +1,8 @@
-﻿using System;
+﻿
 namespace GenericRepository
 {
-    public interface IRecord
+    public interface IRecord : IEntity
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
     }
 }
