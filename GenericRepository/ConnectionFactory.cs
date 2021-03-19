@@ -12,7 +12,7 @@ namespace GenericRepository
         {
             var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
-
+            
             var option = new DbContextOptionsBuilder<SqlLiteDbContext>().UseSqlite(connection).Options;
 
             var context = new SqlLiteDbContext(option);

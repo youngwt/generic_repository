@@ -11,7 +11,6 @@ namespace GenericRepository
 
         TEntity GetById(Guid id);
         IQueryable<TEntity> Filter();
-        IQueryable<TEntity> Filter(Func<bool, TEntity> predicate);
 
         void SaveChanges();
 

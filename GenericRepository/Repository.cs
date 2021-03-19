@@ -27,17 +27,17 @@ namespace GenericRepository
 
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            var entityToDelete = _context.Set<TEntity>().FirstOrDefault(x => x.Id == id);
+            if(entityToDelete != null)
+            {
+                _context.Remove(entityToDelete);
+            }
+            _context.SaveChanges();
         }
 
         public IQueryable<TEntity> Filter()
         {
             return _context.Set<TEntity>();
-        }
-
-        public IQueryable<TEntity> Filter(Func<bool, TEntity> predicate)
-        {
-            throw new NotImplementedException();
         }
 
         public TEntity GetById(Guid id)
