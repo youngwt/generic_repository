@@ -2,26 +2,26 @@ using System.Linq;
 using GenericRepository;
 using NUnit.Framework;
 
-namespace Generic_Repository
+namespace GenericRepositoryTests
 {
     [TestFixture]
-    public class Tests
+    public class CRUDFixtures
     {
 
-        private IRepository<Record> _repository; 
+        private IRepository<Release> _repository; 
 
         [SetUp]
         public void Setup()
         {
             var factory = new ConnectionFactory();
-            _repository = new Repository<Record>(factory.CreateContext());
+            _repository = new Repository<Release>(factory.CreateContext());
         }
 
         [Test]
         public void CanSaveAndReadRecord()
         {
             // Arrange
-            var record = new Record()
+            var record = new Release()
             {
                 Name = "test"
             };
@@ -39,7 +39,7 @@ namespace Generic_Repository
         public void CanDeleteRecord()
         {
             // Arrange
-            var record = new Record()
+            var record = new Release()
             {
                 Name = "test"
             };
@@ -63,7 +63,7 @@ namespace Generic_Repository
         public void CanUpdateRecord()
         {
             // Arrange
-            var record = new Record()
+            var record = new Release()
             {
                 Name = "test"
             };
@@ -84,12 +84,12 @@ namespace Generic_Repository
         public void CanDeleteById()
         {
             // Arrange
-            var record1 = new Record()
+            var record1 = new Release()
             {
                 Name = "test"
             };
 
-            var record2 = new Record()
+            var record2 = new Release()
             {
                 Name = "test2"
             };
@@ -110,12 +110,12 @@ namespace Generic_Repository
         public void CanFilterWithPredicate()
         {
             // Arrange
-            var record1 = new Record()
+            var record1 = new Release()
             {
                 Name = "test"
             };
 
-            var record2 = new Record()
+            var record2 = new Release()
             {
                 Name = "test2"
             };

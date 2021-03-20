@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,7 +9,7 @@ namespace GenericRepository
     {
         private bool disposedValue = false;
 
-        public SqlLiteDbContext CreateContext()
+        public SqlLiteDbContext CreateContext(bool preloadData = false)
         {
             var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
@@ -22,6 +23,15 @@ namespace GenericRepository
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
             }
+
+            var sql = context.Database.GenerateCreateScript();
+
+            if(preloadData)
+            {
+                var testData = File.ReadAllText("testData.sql");
+                context.Database.ExecuteSqlRaw(testData);
+            }
+
 
             return context;
         }
