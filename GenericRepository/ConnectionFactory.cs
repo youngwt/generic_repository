@@ -24,8 +24,10 @@ namespace GenericRepository
                 context.Database.EnsureCreated();
             }
 
-            var sql = context.Database.GenerateCreateScript();
+            // uncomment below if you want to see the generated schema
+            //var sql = context.Database.GenerateCreateScript();
 
+            // for testing purposes
             if(preloadData)
             {
                 var testData = File.ReadAllText("testData.sql");

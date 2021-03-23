@@ -29,17 +29,5 @@ namespace GenericRepositoryTests
             Assert.That(albums.Any(x => x.Name.Equals("Abbey Road")), Is.True);
             Assert.That(albums.Any(x => x.Name.Equals("(What''s the story) Morning Glory")), Is.False);
         }
-
-        [Test]
-        public void CanQueryForOasisSingles() {
-        }
-
-        [Test]
-        public void CanQueryForOasisBSidesFromThe90s()
-        {
-            // Act
-
-            // Assert
-        }
     }
 }
