@@ -1,9 +1,4 @@
-﻿# ASP.NET Core (.NET Framework)
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
-trigger:
+﻿trigger:
 - main
 
 pool:
@@ -15,6 +10,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk 5.0.100'
   inputs:
@@ -28,19 +24,16 @@ steps:
     command: restore
     projects: '**/*.csproj'
 
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
   inputs:
-    restoreSolution: '$(solution)'
+    command: 'build'
+    projects: '**/*.sln'
 
 - task: DotNetCoreCLI@2
-  displayName: Build
+  displayName: 'dotnet test'
   inputs:
-    command: build
-    projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: test
-    projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    command: 'test'
+    projects: '**/*tests.csproj'
+    arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
+    testRunTitle: 'Generic Repository Tests'
